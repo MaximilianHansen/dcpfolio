@@ -9,7 +9,7 @@ let content = [{difficulty : "Medium Stich Fix", title: "Nov-7th" , body : "Good
 
 cards.forEach(card => { 
     card.querySelector(".card-title").innerHTML = content[i].title + " " + content[i].difficulty;
-    card.querySelector(".card-img-top").src = `/days/${content[i].title}/Solution.png`;
+    card.querySelector(".card-img-top").src = `/solutions/${content[i].title}/Solution.png`;
     card.querySelector(".card-text").innerHTML = content[i].body.slice(0,75);
     console.log(i, content[i])
     i++
