@@ -1,0 +1,12 @@
+.imgSize {
+    max-height: 240px;
+    overflow: hidden;
+}
+
+.nav-pills .active {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+.card {
+    cursor: pointer;
+}
