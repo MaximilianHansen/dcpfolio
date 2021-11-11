@@ -8,16 +8,38 @@ let content = [{difficulty: "Medium Twitter", title: "Nov-10th", body : "Good mo
                {difficulty: "Easy Wayfair", title : "Nov-4th", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Wayfair. You are given a 2 x N board, and instructed to completely cover the board with the following shapes: Dominoes, or 2 x 1 rectangles. Trominoes, or L-shapes. For example, if N = 4, here is one possible configuration, where A is a domino, and B and C are trominoes. A B B C A B C C Given an integer N, determine in how many ways this task is possible."},
                {difficulty: "Medium Google" , title : "Nov-3rd", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Google. Given a string of parentheses, write a function to compute the minimum number of parentheses to be removed to make the string valid (i.e. each open parenthesis is eventually closed). For example, given the string \"()())()\", you should return 1. Given the string \")(\", you should return 2, since we must remove all of them."}]
 
-cards.forEach(card => { 
-    card.querySelector(".card-title").innerHTML = content[i].title + " " + content[i].difficulty;
-    card.querySelector(".card-img-top").src = `solutions/${content[i].title}/Solution.jpg`;
-    card.querySelector(".card-text").innerHTML = content[i].body.slice(0,75);
-    console.log(i, content[i])
-    i++
-})
+//cards.forEach(card => { 
+//    card.querySelector(".card-title").innerHTML = content[i].title + " " + content[i].difficulty;
+//    card.querySelector(".card-img-top").src = `solutions/${content[i].title}/Solution.jpg`;
+//    card.querySelector(".card-text").innerHTML = content[i].body.slice(0,75);
+//    console.log(i, content[i])
+//    i++
+//})
 
-function makeCards(card){
-    document.querySelector(".cardsHolder").innerHTML += 
+function makeVerticalCards(card, selector){
+    document.querySelector(selector).innerHTML += 
+        `<div class="card cardy m-3 bg-image hover-overlay" style="width: 18rem;">
+                  <div class = "imgSize">
+                  <img src="solutions/${card.title}/Solution.jpg" class="card-img-top " alt="...">
+                  </div>
+                <div
+                  class="mask"
+                  style="
+                  background: linear-gradient(
+                    45deg,
+                    rgba(29, 236, 197, 0.5),
+                    rgba(91, 14, 214, 0.5) 100%);">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">${card.title}</h5>
+                  <p class="card-text">${card.body.slice(0,75)}</p>
+                  <a href="#" class="btn btn-dark">See More</a>
+                </div>
+         </div>`
+};
+
+function makeHorizontalCards(card, selector){
+    document.querySelector(selector).innerHTML += 
     `<div class="card cardInGrid mb-5 bg-image hover-overlay" style="max-width: 900px;">
     <div class="row g-0">
       <div class="col-md-4 ">
@@ -40,6 +62,11 @@ function makeCards(card){
       </div>
     </div>
   </div>`
-}
+};
 
-content.forEach((card) => {makeCards(card)})
+if (document.querySelector(".homePageCards")) {
+content.forEach((card)=> {makeVerticalCards(card, ".homePageCards")});}
+
+if (document.querySelector(".cardsHolder")) {
+content.forEach((card) => {makeHorizontalCards(card, ".cardsHolder")});
+}
