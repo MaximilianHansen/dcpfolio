@@ -16,3 +16,30 @@ cards.forEach(card => {
     i++
 })
 
+function makeCards(card){
+    document.querySelector(".cardsHolder").innerHTML += 
+    `<div class="card cardInGrid mb-5 bg-image hover-overlay" style="max-width: 900px;">
+    <div class="row g-0">
+      <div class="col-md-4 ">
+        <img src="solutions/${card.title}/Solution.jpg" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div
+      class="mask"
+      style="
+      background: linear-gradient(
+        45deg,
+        rgba(29, 236, 197, 0.5),
+        rgba(91, 14, 214, 0.5) 100%
+      );"></div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">${card.title}</h5>
+          <p class="card-text">${card.body}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>`
+}
+
+content.forEach((card) => {makeCards(card)})
