@@ -1,3 +1,30 @@
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+.card-body {
+    text-decoration-color: black;  }
+
 .imgSize {
     max-height: 240px;
     overflow: hidden;
@@ -20,3 +47,8 @@
  .cardInGrid {
     flex: 0 1 100%;
  }
+
+.responsive {
+    width: 100%;
+    height :auto;
+}

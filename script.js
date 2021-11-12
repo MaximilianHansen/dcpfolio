@@ -1,6 +1,4 @@
-//console.log("hey")
 var cards = document.querySelectorAll(".cardy");
-let i = 0;
 
 let content = [
                {difficulty: "Easy Amazon", title: "Nov-11th", body : "Good morning! Here's your coding interview problem for today.This problem was asked by Amazon. You are given a list of data entries that represent entries and exits of groups of people into a building. An entry looks like this: \{\"timestamp\": 1526579928, count\: 3, \"type\": \"enter\"\} This means 3 people entered the building. An exit looks like this: \{\"timestamp\": 1526580382, count: 2, \"type\": \"exit\"\} This means that 2 people exited the building. timestamp is in Unix time. Find the busiest period in the building, that is, the time with the most people in the building. Return it as a pair of (start, end) timestamps. You can assume the building always starts off and ends up empty, i.e. with 0 people inside."},
@@ -10,22 +8,15 @@ let content = [
                {difficulty: "Easy Wayfair", title : "Nov-4th", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Wayfair. You are given a 2 x N board, and instructed to completely cover the board with the following shapes: Dominoes, or 2 x 1 rectangles. Trominoes, or L-shapes. For example, if N = 4, here is one possible configuration, where A is a domino, and B and C are trominoes. A B B C A B C C Given an integer N, determine in how many ways this task is possible."},
                {difficulty: "Medium Google" , title : "Nov-3rd", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Google. Given a string of parentheses, write a function to compute the minimum number of parentheses to be removed to make the string valid (i.e. each open parenthesis is eventually closed). For example, given the string \"()())()\", you should return 1. Given the string \")(\", you should return 2, since we must remove all of them."}]
 
-//cards.forEach(card => { 
-//    card.querySelector(".card-title").innerHTML = content[i].title + " " + content[i].difficulty;
-//    card.querySelector(".card-img-top").src = `solutions/${content[i].title}/Solution.jpg`;
-//    card.querySelector(".card-text").innerHTML = content[i].body.slice(0,75);
-//    console.log(i, content[i])
-//    i++
-//})
 
-function makeVerticalCards(card, selector){
+function makeVerticalCards(card, selector, index){
     document.querySelector(selector).innerHTML += 
-        `<div class="card cardy m-2 bg-image hover-overlay" style="width: 18rem;">
+        `<div class="card vertCardClick cardy m-2 bg-image hover-overlay" style="width: 18rem;">
                   <div class = "imgSize">
                   <img src="solutions/${card.title}/Solution.jpg" class="card-img-top " alt="...">
                   </div>
                 <div
-                  class="mask"
+                  class="mask" id="${index}"
                   style="
                   background: linear-gradient(
                     45deg,
@@ -33,6 +24,7 @@ function makeVerticalCards(card, selector){
                     rgba(91, 14, 214, 0.5) 100%);">
                 </div>
                 <div class="card-body">
+                
                   <h5 class="card-title">${card.title} ${card.difficulty}</h5>
                   <p class="card-text">${card.body.slice(0,75)}</p>
                   <a href="#" class="btn btn-dark">See More</a>
@@ -40,15 +32,15 @@ function makeVerticalCards(card, selector){
          </div>`
 };
 
-function makeHorizontalCards(card, selector){
+function makeHorizontalCards(card, selector, index){
     document.querySelector(selector).innerHTML += 
-    `<div class="card cardInGrid mb-5 bg-image hover-overlay" style="max-width: 1400px;">
+    `<div class="card horzCardClick cardInGrid mb-5 bg-image hover-overlay" style="max-width: 1400px;">
     <div class="row g-0">
       <div class="col-md-4 ">
         <img src="solutions/${card.title}/Solution.jpg" class="img-fluid rounded-start" alt="...">
       </div>
       <div
-      class="mask"
+      class="mask" id="${index}"
       style="
       background: linear-gradient(
         45deg,
@@ -57,6 +49,7 @@ function makeHorizontalCards(card, selector){
       );"></div>
       <div class="col-md-8">
         <div class="card-body">
+        
           <h5 class="display-5 card-title">${card.title}  ${card.difficulty}</h5>
           <p class="card-text">${card.body}</p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -66,11 +59,32 @@ function makeHorizontalCards(card, selector){
   </div>`
 };
 
-if (document.querySelector(".homePageCards")) {
-let i = 0;
-content.forEach((card)=> {if(i<4) {makeVerticalCards(card, ".homePageCards")} i++ });
+function createCardPage (e) {
+  console.log("click")
+  let x = e.target.id;
+  let currentLocation = window.location.pathname;
+
+ document.querySelector(".cardsHolder").innerHTML = 
+  `<a href ="${currentLocation}" class = "m-3"> [Go Back] </a>
+  <div class = "container cardInGrid style="max-width: 1400px;"">
+  <h1 class = 'display-4'>${content[x].title} ${content[x].difficulty}</h1>
+  <div class = "mt-3">${content[x].body}</div>
+  <img src = "solutions/${content[x].title}/Solution.jpg" class = "responsive mt-4">
+  </div>`;
+  window.scrollTo(0, 0);
 }
 
-if (document.querySelector(".cardsHolder")) {
-content.forEach((card) => {makeHorizontalCards(card, ".cardsHolder")});
+
+if (document.querySelector(".homePageCards")) {
+console.log("cards here")
+let i = 0;
+content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index)} i++ });
+var vertCards = document.querySelectorAll(".vertCardClick");
+vertCards.forEach((card) => {card.addEventListener("click", createCardPage)});
+}
+
+if (document.querySelector(".dcpcards" )) {
+content.forEach((card, index) => {makeHorizontalCards(card, ".cardsHolder", index)});
+var horzCards = document.querySelectorAll(".horzCardClick");
+horzCards.forEach((card) => {card.addEventListener("click", createCardPage)})
 } 
