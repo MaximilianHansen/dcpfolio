@@ -10,15 +10,18 @@ let content = [
                {difficulty: "Easy Wayfair", title : "Nov-4th", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Wayfair. You are given a 2 x N board, and instructed to completely cover the board with the following shapes: Dominoes, or 2 x 1 rectangles. Trominoes, or L-shapes. For example, if N = 4, here is one possible configuration, where A is a domino, and B and C are trominoes. A B B C A B C C Given an integer N, determine in how many ways this task is possible."},
                {difficulty: "Medium Google" , title : "Nov-3rd", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Google. Given a string of parentheses, write a function to compute the minimum number of parentheses to be removed to make the string valid (i.e. each open parenthesis is eventually closed). For example, given the string \"()())()\", you should return 1. Given the string \")(\", you should return 2, since we must remove all of them."}]
 
+let portfolio = [
+              {difficulty: "" , title: "Super Future Fitness", body : "Here is a wordpress website with some custom alterations I made for a fitness center. Web site is designed to share information on the gym both static and dynamic. Dynamic content includes current promotions and facility class schedule utilizing an API and Iframe."}
+]
 
-function makeVerticalCards(card, selector, index){
+function makeVerticalCards(card, selector, index, array){
     document.querySelector(selector).innerHTML += 
         `<div class="card vertCardClick cardy m-2 bg-image hover-overlay" style="width: 18rem;">
                   <div class = "imgSize">
                   <img src="solutions/${card.title}/Solution.jpg" class="card-img-top " alt="...">
                   </div>
                 <div
-                  class="mask" id="${index}"
+                  class="${array} mask" id="${index}"
                   style="
                   background: linear-gradient(
                     45deg,
@@ -34,7 +37,7 @@ function makeVerticalCards(card, selector, index){
          </div>`
 };
 
-function makeHorizontalCards(card, selector, index){
+function makeHorizontalCards(card, selector, index, array){
     document.querySelector(selector).innerHTML += 
     `<div class="card horzCardClick cardInGrid mb-5 bg-image hover-overlay" style="max-width: 1400px;">
     <div class="row g-0">
@@ -42,7 +45,7 @@ function makeHorizontalCards(card, selector, index){
         <img src="solutions/${card.title}/Solution.jpg" class="img-fluid imgSize rounded-start" alt="...">
       </div>
       <div
-      class="mask" id="${index}"
+      class="${array} mask" id="${index}"
       style="
       background: linear-gradient(
         45deg,
@@ -62,17 +65,21 @@ function makeHorizontalCards(card, selector, index){
 };
 
 function createCardPage (e) {
-  console.log("click")
   let x = e.target.id;
+  let y = e.target.className;
+  if(y.includes("content")) {y = content}; 
+  if(y.includes("portfolio")) {y = portfolio};
   let currentLocation = window.location.pathname;
+  console.log(y)
 
- document.querySelector(".cardsHolder").innerHTML = 
-  `<a href ="${currentLocation}" class = "m-3"> [Go Back] </a>
+ document.querySelector(".pageContent").innerHTML = 
+  `<div class ="container">
+  <a href ="${currentLocation}" class = "m-3"> [Go Back] </a>
   <div class = "container cardInGrid style="max-width: 1400px;"">
-  <h1 class = 'display-4'>${content[x].title} ${content[x].difficulty}</h1>
-  <div class = "mt-3">${content[x].body}</div>
-  <img src = "solutions/${content[x].title}/Solution.jpg" class = "responsive mt-4">
-  </div>`;
+  <h1 class = 'display-4'>${y[x].title} ${y[x].difficulty}</h1>
+  <div class = "mt-3">${y[x].body}</div>
+  <img src = "solutions/${y[x].title}/Solution.jpg" class = "responsive mt-4">
+  </div></div>`;
   window.scrollTo(0, 0);
 }
 
@@ -80,13 +87,16 @@ function createCardPage (e) {
 if (document.querySelector(".homePageCards")) {
 console.log("cards here")
 let i = 0;
-content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index)} i++ });
+content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index, "content")} i++ });
+
+i = 0;
+portfolio.forEach((card, index) => {if(i<4) {makeVerticalCards(card, ".portfolioCards", index, "portfolio")} i++ });
 var vertCards = document.querySelectorAll(".vertCardClick");
 vertCards.forEach((card) => {card.addEventListener("click", createCardPage)});
 }
 
 if (document.querySelector(".dcpcards" )) {
-content.forEach((card, index) => {makeHorizontalCards(card, ".cardsHolder", index)});
+content.forEach((card, index) => {makeHorizontalCards(card, ".cardsHolder", index, "content")});
 var horzCards = document.querySelectorAll(".horzCardClick");
 horzCards.forEach((card) => {card.addEventListener("click", createCardPage)})
 } 
