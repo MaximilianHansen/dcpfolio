@@ -30,6 +30,42 @@ a:link {
     overflow: hidden;
 }
 
+.imgSize1 {
+  height : 6em;
+  width: 6em;
+}
+
+@media only screen and (max-width: 695px) {
+  .imgSize1 {
+    height : 4em;
+    width : 4em;
+  }
+  .title {
+    font-size: 2em;
+  }
+  .header {
+    margin: 0;
+  }
+  .nav-pills{
+    margin : 1;
+  }
+}
+
+@media only screen and (max-width: 435px) {
+  .imgSize1 {
+    height : 4em;
+    width : 4em;
+  }
+  .title {
+    font-size: 1.5em;
+  }
+  .header {
+    margin: 0;
+  }
+  .nav-pills{
+    margin : 1;
+  }
+}
 
 .nav-pills .active {
     background-color: rgb(0, 0, 0) !important;
