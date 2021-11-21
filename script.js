@@ -42,7 +42,7 @@ function makeHorizontalCards(card, selector, index, array){
     document.querySelector(selector).innerHTML += 
     `<div class="card horzCardClick cardInGrid mb-5 bg-image hover-overlay" style="max-width: 1400px;">
     <div class="row g-0">
-      <div class="col-md-4 ">
+      <div class="col-md-3 ">
         <img src="solutions/${card.title}/Solution.jpg" class="img-fluid imgSize rounded-start" alt="...">
       </div>
       <div
@@ -56,7 +56,7 @@ function makeHorizontalCards(card, selector, index, array){
       <div class="col-md-8">
         <div class="card-body">
         
-          <h5 class="display-5 card-title">${card.title}  ${card.difficulty}</h5>
+          <h5 class="h2 card-title">${card.title}  ${card.difficulty}</h5>
           <p class="card-text">${card.body}</p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>

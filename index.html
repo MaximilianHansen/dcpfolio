@@ -14,39 +14,58 @@
     <title>Daily Coding Problem Portfolio</title>
   </head>
   <body>
-    <div class="header mt-4 m-3 row">
+    <!-- <div class="header mt-4 m-3 row">
     <div class = "col"><h1 class = 'display-1 title'>~/maximilianHansen</h1></div>
     <div class = "col"><img class='imgSize1' src = "portfolio/logo.png" align= "right"></div>
-    </div>
+    </div> -->
 
        
-<ul class="nav nav-pills nav-fill m-5 black">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="index.html">home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Portfolio</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="dailycodingproblems.html">Daily Coding Problems</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">About Me</a>
-  </li>
-</ul>
-   
+    <nav class= "navbar navbar-expand-sm navbar-light bg-light">
+    <div class= "container">
+      <a href ="index.html"
+      class= "navbar-brand mb-0 h1">
+      <img 
+      class = "d-inline-block align-top"
+      src = "portfolio/logo.png"
+      width="50" height ="50"/>
+      ~/maximilianHansen
+      </a>
+      <button type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav" 
+      class= "navbar-toggler"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label ="toggle navigation">
+      <img src="https://img.icons8.com/ios-glyphs/60/000000/hamburger.png" height="40" width="auto"/>
+      </button>
+      <div class ="collapse navbar-collapse" id = "navbarNav">   
+      <ul class="navbar-nav nav-fill m-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dailycodingproblems.html">Daily Coding Problems</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">About Me</a>
+        </li>
+      </ul>
+      </div>
+    </div>
+      </nav>
 
 
 <div class = "pageContent">
 
               <div class=" card container cardsHolder mt-5 justify-content-center">
-                <h1 class= 'display-4 m-3'>Last four daily coding problelms...</h1>
+                <h1 class= 'h2 m-3'>Last four daily coding problelms...</h1>
                 <div class= "container homePageCards row justify-content-center mb-3"> 
                 </div>
               </div>
 
               <div class=" card container cardsHolder mt-5 justify-content-center">
-                <h1 class= 'display-4 m-3'>Recent Projects...</h1>
+                <h1 class= 'h2 m-3'>Recent Projects...</h1>
                 <div class= "container portfolioCards row justify-content-center mb-3"> 
                 </div>
               </div>
