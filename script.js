@@ -1,17 +1,6 @@
 var cards = document.querySelectorAll(".cardy");
 let windowIsMobile = false;
 
-window.addEventListener("resize", windowSize)
-
-function windowSize() {
-console.log(window.innerWidth);
-if(window.innerWidth < 770 ) {
-  makeCarosel(content, ".homePageCards")}
-else{ i = 0;
-  document.querySelector('.homePageCards').innerHTML = "";
-  content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index, "content")} i++ });
-}
-}
 
 let content = [
                {difficulty: "Easy from Slack", title: "Nov-13th", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Slack. You are given a string formed by concatenating several words corresponding to the integers zero through nine and then anagramming. For example, the input could be 'niesevehrtfeev', which is an anagram of 'threefiveseven'. Note that there can be multiple instances of each integer. Given this string, return the original integers in sorted order. In the example above, this would be 357."},
@@ -28,33 +17,34 @@ let portfolio = [
 ]
 
 
-function makeCarosel(content, selector) { document.querySelector(selector).innerHTML = `
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+function makeCarosel(content, selector) { 
+  document.querySelector(selector).innerHTML = `
+<div id="carouselExampleCaptions" class="carousel slide  m-2" data-bs-ride="carousel">
 <div class="carousel-indicators">
   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
 </div>
 <div class="carousel-inner">
-  <div class="carousel-item active">
-    <img src="solutions/${content[0].title}/Solution.jpg" class="d-block w-100" alt="...">
+  <div class="carousel-item active" id="0">
+    <img src="solutions/${content[0].title}/Solution.jpg" class="content d-block w-100" id="0" alt="...">
     <div class="carousel-caption d-md-block">
-      <h5>${content[0].title}</h5>
-      <p>This problem is ${content[0].difficulty}</p>
+      <h5 id="0" class= "content">${content[0].title}</h5>
+      <p id="0" class= "content">This problem is ${content[0].difficulty}</p>
     </div>
   </div>
-  <div class="carousel-item">
-    <img src="solutions/${content[1].title}/Solution.jpg" class="d-block w-100" alt="...">
+  <div class="carousel-item" id="1">
+    <img id="1" src="solutions/${content[1].title}/Solution.jpg" class="content d-block w-100" alt="...">
     <div class="carousel-caption d-md-block">
-      <h5>${content[1].title}</h5>
-      <p>This problem is ${content[1].difficulty}</p>
+      <h5 id="1" class= "content">${content[1].title}</h5>
+      <p id="1">This problem is ${content[1].difficulty}</p>
     </div>
   </div>
-  <div class="carousel-item">
-    <img src="solutions/${content[2].title}/Solution.jpg" class="d-block w-100" alt="...">
+  <div class="carousel-item" id="2">
+    <img id="2" src="solutions/${content[2].title}/Solution.jpg" class="content d-block w-100" alt="...">
     <div class="carousel-caption">
-      <h5>${content[2].title}</h5>
-      <p>This problem is ${content[2].difficulty}</p>
+      <h5 id="2" class= "content">${content[2].title}</h5>
+      <p id="2" class= "content">This problem is ${content[2].difficulty}</p>
     </div>
   </div>
 </div>
@@ -67,6 +57,8 @@ function makeCarosel(content, selector) { document.querySelector(selector).inner
   <span class="visually-hidden">Next</span>
 </button>
 </div>`
+var carouselPages = document.querySelectorAll(".carousel-item");
+carouselPages.forEach((page) => {page.addEventListener("click", createCardPage)});
 }
 
 function makeVerticalCards(card, selector, index, array){
@@ -121,15 +113,16 @@ function makeHorizontalCards(card, selector, index, array){
 
 function createCardPage (e) {
   let x = e.target.id;
+  console.log(x)
   let y = e.target.className;
   if(y.includes("content")) {y = content}; 
   if(y.includes("portfolio")) {y = portfolio};
   let currentLocation = window.location.pathname;
-  console.log(y)
+  
 
  document.querySelector(".pageContent").innerHTML = 
-  `<div class ="container">
-  <a href ="${currentLocation}" class = "m-3"> [Go Back] </a>
+  `<div class ="container mt-3">
+  <a href ="${currentLocation}" class = "m-3"> < [Go Back] </a>
   <div class = "container cardInGrid style="max-width: 1400px;"">
   <h1 class = 'display-4'>${y[x].title} ${y[x].difficulty}</h1>
   <div class = "mt-3">${y[x].body}</div>
@@ -138,20 +131,41 @@ function createCardPage (e) {
   window.scrollTo(0, 0);
 }
 
+function resizer() {
+  if(window.innerWidth < 770 ) {
+    makeCarosel(content, ".homePageCards")
+    i = 0
+    document.querySelector('.portfolioCards').innerHTML = "";
+    portfolio.forEach((card, index) => {if(i<4) {makeVerticalCards(card, ".portfolioCards", index, "portfolio")} i++ })
+  }else{ i = 0;
+   document.querySelector('.homePageCards').innerHTML = "";
+   content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index, "content")} i++ })
+   i = 0;
+   ;
+  }}
 
 if (document.querySelector(".homePageCards") && window.innerWidth >= 770) {
-console.log("cards here")
-let i = 0;
-content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index, "content")} i++ });
-
-i = 0;
-portfolio.forEach((card, index) => {if(i<4) {makeVerticalCards(card, ".portfolioCards", index, "portfolio")} i++ });
-var vertCards = document.querySelectorAll(".vertCardClick");
-vertCards.forEach((card) => {card.addEventListener("click", createCardPage)});
-} else {makeCarosel(content, ".homePageCards")}
+  window.addEventListener("resize", resizer)
+  let i = 0;
+  content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index, "content")} i++ });
+  i = 0;
+  portfolio.forEach((card, index) => {if(i<4) {makeVerticalCards(card, ".portfolioCards", index, "portfolio")} i++ });
+  var vertCards = document.querySelectorAll(".vertCardClick");
+  vertCards.forEach((card) => {card.addEventListener("click", createCardPage)});
+  } 
+  else if(document.querySelector(".homePageCards")) {
+  window.addEventListener("resize", resizer)
+  makeCarosel(content, ".homePageCards")
+  i = 0;
+  document.querySelector('.portfolioCards').innerHTML = "";
+  portfolio.forEach((card, index) => {if(i<4) {makeVerticalCards(card, ".portfolioCards", index, "portfolio")} i++ });}
 
 if (document.querySelector(".dcpcards" )) {
-content.forEach((card, index) => {makeHorizontalCards(card, ".cardsHolder", index, "content")});
-var horzCards = document.querySelectorAll(".horzCardClick");
-horzCards.forEach((card) => {card.addEventListener("click", createCardPage)})
-} 
+  content.forEach((card, index) => {makeHorizontalCards(card, ".cardsHolder", index, "content")});
+  var horzCards = document.querySelectorAll(".horzCardClick");
+  horzCards.forEach((card) => {card.addEventListener("click", createCardPage)})
+  } 
+
+
+
+

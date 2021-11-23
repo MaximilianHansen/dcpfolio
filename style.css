@@ -57,6 +57,14 @@ body{
       transform: translateX(-100%);
     }
   }
+  .row {
+    --bs-gutter-x: 0rem;}
+
+  .carousel{
+    width : 80%;
+    display: flex;
+    justify-content: center;
+  }
 .carousel-caption {
   background-color: rgba(0,0,0, 0.60);
   width: 100%;
