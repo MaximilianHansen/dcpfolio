@@ -11,13 +11,12 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
     <link href="style.css" rel= "stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <title>Daily Coding Problem Portfolio</title>
   </head>
   <body>
-    <!-- <div class="header mt-4 m-3 row">
-    <div class = "col"><h1 class = 'display-1 title'>~/maximilianHansen</h1></div>
-    <div class = "col"><img class='imgSize1' src = "portfolio/logo.png" align= "right"></div>
-    </div> -->
 
        
   <nav class= "navbar navbar-expand-sm navbar-light bg-light">
@@ -40,7 +39,7 @@
           <img src="https://img.icons8.com/ios-glyphs/60/000000/hamburger.png" height="40" width="auto"/>
           </button>
         <div class ="collapse navbar-collapse" id = "navbarNav">   
-          <ul class="navbar-nav nav-fill m-2">
+          <ul class="navbar-nav nav-fill">
             <li class="nav-item">
               <a class="nav-link" href="#">Portfolio</a>
             </li>
@@ -55,19 +54,46 @@
       </div>
   </nav>
 
-      <div class="scroll-left mt-4">
-        <h3 style="color: rgb(138, 138, 138); white-space:nowrap;">“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” – Martin Fowler</h1>
-      </div>
+  <div class = "landing">
+     
+    <div id="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="500px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="perserve">
+          <defs>
+              <path id="circlePath" d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+          </defs>
+          <circle cx="150" cy="100" r="75" fill="none"/>
+          <g>
+              <use xlink:href="#circlePath" fill="none"/>
+              <text fill="#000">
+                  <textPath  xlink:href="#circlePath" fill="white"> Write Clean Code, Write Clean Code, Write Clean Code, Write Clean Code, Write Clean Code </textPath>
+              </text>
+          </g>
+      </svg>
+    </div>
+      <h1 class = "headerText">
+        <img class = "doggyPic" src = "portfolio/doggy.png">
+        <ul class = "homePageList" style="list-style-type:none; ">
+        <li class = "largeHeaderText">Max</li>
+        <li class="smallHeaderText">Hansen</li>
+        </ul>
+      </h1>  
+   <div class ="scrollDown">
+    <h1 style= "transform: rotate(-90deg);"> &#8592; Scroll Down</h1>
+    </div>
+    
+  </div>
+  
+     
 
 <div class = "pageContent">
 
-              <div class=" card container cardsHolder mt-3 justify-content-center">
+              <div class="container cardsHolder mt-3">
                 <h1 class= 'h2 m-3'>Last four daily coding problelms </h1>
                 <div class= "container homePageCards row justify-content-center mb-3"> 
                 </div>
               </div>
 
-              <div class=" card container cardsHolder mt-5 justify-content-center">
+              <div class="container cardsHolder mt-5">
                 <h1 class= 'h2 m-3'>Recent Projects</h1>
                 <div class= "container portfolioCards row justify-content-center mb-3"> 
                 </div>
