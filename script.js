@@ -3,6 +3,7 @@ let windowIsMobile = false;
 
 
 let content = [
+               {difficulty: "Easy from Google", title: "Nov-24th", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Google. Given two singly linked lists that intersect at some point, find the intersecting node. The lists are non-cyclical. For example, given A = 3 -> 7 -> 8 -> 10 and B = 99 -> 1 -> 8 -> 10, return the node with value 8. In this example, assume nodes with the same value are the exact same node objects. Do this in O(M + N) time (where M and N are the lengths of the lists) and constant space."},
                {difficulty: "Easy from Slack", title: "Nov-13th", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Slack. You are given a string formed by concatenating several words corresponding to the integers zero through nine and then anagramming. For example, the input could be 'niesevehrtfeev', which is an anagram of 'threefiveseven'. Note that there can be multiple instances of each integer. Given this string, return the original integers in sorted order. In the example above, this would be 357."},
                {difficulty: "Medium from Google", title: "Nov-12th", body : "Good morning! Here's your coding interview problem for today. This problem was asked by Google. Given a stack of N elements, interleave the first half of the stack with the second half reversed using only one other queue. This should be done in-place. Recall that you can only push or pop from a stack, and enqueue or dequeue from a queue. For example, if the stack is [1, 2, 3, 4, 5], it should become [1, 5, 2, 4, 3]. If the stack is [1, 2, 3, 4], it should become [1, 4, 2, 3]. Hint: Try working backwards from the end state."},
                {difficulty: "Easy from Amazon", title: "Nov-11th", body : "Good morning! Here's your coding interview problem for today.This problem was asked by Amazon. You are given a list of data entries that represent entries and exits of groups of people into a building. An entry looks like this: \{\"timestamp\": 1526579928, count\: 3, \"type\": \"enter\"\} This means 3 people entered the building. An exit looks like this: \{\"timestamp\": 1526580382, count: 2, \"type\": \"exit\"\} This means that 2 people exited the building. timestamp is in Unix time. Find the busiest period in the building, that is, the time with the most people in the building. Return it as a pair of (start, end) timestamps. You can assume the building always starts off and ends up empty, i.e. with 0 people inside."},
@@ -137,7 +138,9 @@ function resizer() {
     i = 0
     document.querySelector('.portfolioCards').innerHTML = "";
     portfolio.forEach((card, index) => {if(i<4) {makeVerticalCards(card, ".portfolioCards", index, "portfolio")} i++ })
+    document.querySelector('.scrollDownText').innerHTML = "&#8592;";
   }else{ i = 0;
+    document.querySelector('.scrollDownText').innerHTML = "&#8592; Scroll Down"
    document.querySelector('.homePageCards').innerHTML = "";
    content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index, "content")} i++ })
    i = 0;
@@ -154,8 +157,9 @@ if (document.querySelector(".homePageCards") && window.innerWidth >= 770) {
   vertCards.forEach((card) => {card.addEventListener("click", createCardPage)});
   } 
   else if(document.querySelector(".homePageCards")) {
-  window.addEventListener("resize", resizer)
-  makeCarosel(content, ".homePageCards")
+  window.addEventListener("resize", resizer);
+  document.querySelector('.scrollDownText').innerHTML = "&#8592;";
+  makeCarosel(content, ".homePageCards");
   i = 0;
   document.querySelector('.portfolioCards').innerHTML = "";
   portfolio.forEach((card, index) => {if(i<4) {makeVerticalCards(card, ".portfolioCards", index, "portfolio")} i++ });}

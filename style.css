@@ -1,7 +1,16 @@
 body{
-  overflow-x:hidden;
-  margin: 0px;
-  height: 100%;
+background-color: black;
+height: 100%;
+overflow-x: hidden !important;
+width: 100%;
+  }
+
+.wrapper {
+  overflow-x: hidden;
+  position: relative
+}
+  .h1 , .h2 {
+    color : white;
   }
 
   .circle {
@@ -72,6 +81,7 @@ body{
     width : 100%;
     display: flex;
     justify-content: center;
+    border: solid 4px white;
   }
 .carousel-caption {
   background-color: rgba(0,0,0, 0.60);
@@ -99,6 +109,8 @@ body{
 
 .card {
     cursor: pointer;
+    border: solid 4px white;
+    border-radius: 0;
 }
 
 .landing {
@@ -113,7 +125,7 @@ body{
 }
 
 .headerText {
-  height:70%;
+  height:100%;
   display:flex; 
  justify-content: center;
  align-items: center;
@@ -133,6 +145,9 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    border-style: solid;
+    border: 4px solid white;
+    padding: 2em;
  }
 
  .cardInGrid {
@@ -155,21 +170,28 @@ body{
 
 .scrollDown {
   display: flex;
-  height:70%;
+  height:30%;
   width : 100%;
   padding-left: 5%;
   padding-bottom: 2%;
   position :absolute;
   align-items: flex-end;
-  flex-direction: row;
   justify-content: left;
 }
 
 @media only screen and (max-width: 1056px) {
   .scrollDown {
-    display: none;
-    
-  }
+  display: flex;
+  height:30%;
+  width : 100%;
+  padding-left: 5%;
+  padding-bottom: 2%;
+  position :absolute;
+  align-items: flex-end;
+  justify-content: left;
+}
+
+}
 
 
 @media only screen and (max-width: 642px) {
