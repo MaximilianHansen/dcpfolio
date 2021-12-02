@@ -103,7 +103,7 @@ function makeHorizontalCards(card, selector, index, array){
       <div class="col-md-8">
         <div class="card-body">
         
-          <h5 class="h2 card-title">${card.title}  ${card.difficulty}</h5>
+          <h5 class="h2 card-title" style="color : black;">${card.title}  ${card.difficulty}</h5>
           <p class="card-text">${card.body}</p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
@@ -133,7 +133,7 @@ function createCardPage (e) {
 }
 
 function resizer() {
-  if(window.innerWidth < 770 ) {
+  if(window.innerWidth < 942 ) {
     makeCarosel(content, ".homePageCards")
     i = 0
     document.querySelector('.portfolioCards').innerHTML = "";
@@ -147,7 +147,7 @@ function resizer() {
    ;
   }}
 
-if (document.querySelector(".homePageCards") && window.innerWidth >= 770) {
+if (document.querySelector(".homePageCards") && window.innerWidth >= 942) {
   window.addEventListener("resize", resizer)
   let i = 0;
   content.forEach((card, index)=> {if(i<4) {makeVerticalCards(card, ".homePageCards", index, "content")} i++ });
